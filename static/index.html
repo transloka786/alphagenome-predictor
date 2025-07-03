@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlphaGenome Analysis</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    textarea, input, select { width: 100%; margin-bottom: 1em; }
+    label { font-weight: bold; display: block; margin-top: 1em; }
+    button { padding: 0.5em 1em; font-size: 1em; }
+  </style>
+</head>
+<body>
+  <h1>AlphaGenome Analysis</h1>
+  <form id="analysis-form">
+    <label>Gene name:<br>
+      <input type="text" name="gene" required>
+    </label>
+
+    <label>FASTA (optional):<br>
+      <textarea name="fasta" rows="5" placeholder=">chr1:1000-2000\nATGCGT..." ></textarea>
+    </label>
+
+    <label>Effects (hold Ctrl/Cmd to select multiple):<br>
+      <select name="effects" multiple size="8">
+        <option value="nmd">Nonsense-mediated decay (NMD)</option>
+        <option value="collision">Ribosome collision / stalling</option>
+        <option value="aars">aa-tRNA synthetase mutation</option>
+        <option value="cancer_translation">Cancer-gene translation (e.g. p53)</option>
+        <option value="codon_optimality">Codon optimality / elongation rate</option>
+        <option value="frameshift">Frameshifting potential</option>
+        <option value="utr_structure">UTR structure & IRES prediction</option>
+        <option value="custom">Custom ChatGPT–alpha query</option>
+      </select>
+    </label>
+
+    <label>Cell type:<br>
+      <input type="text" name="cell_type" placeholder="e.g. HeLa">
+    </label>
+
+    <label>Treatment:<br>
+      <input type="text" name="treatment" placeholder="e.g. cisplatin 10 μM for 24h">
+    </label>
+
+    <label>Experimental conditions (one per line):<br>
+      <textarea name="experimental_conditions" rows="4" placeholder="e.g.\nSerum starvation\nHypoxia 1% O₂"></textarea>
+    </label>
+
+    <label>Hypothesis / Notes:<br>
+      <textarea name="hypothesis" rows="3" placeholder="Describe your hypothesis or any special instructions."></textarea>
+    </label>
+
+    <button type="submit">Run Analysis</button>
+  </form>
+
+  <div id="output"></div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
