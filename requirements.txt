@@ -1,4 +1,6 @@
-fastapi
+fastapi            
 uvicorn[standard]
 openai
 alphagenome
+streamlit
+pydantic         
